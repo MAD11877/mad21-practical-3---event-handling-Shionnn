@@ -1,10 +1,10 @@
 package sg.edu.np.prac2;
 
 public class User {
-    public String name;
-    public String description;
+    private String name;
+    private String description;
     private int id;
-    public boolean followed;
+    private boolean followed;
 
     public String getName() {
         return name;

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         Button follow = findViewById(R.id.button_follow);
         TextView name = findViewById(R.id.textView_name);
         TextView desc = findViewById(R.id.textView_desc);
-        name.setText(user1.name + ranNo);
-        desc.setText(user1.description);
+        name.setText(user1.getName() + " " + ranNo);
+        desc.setText(user1.getDescription());
 
-        if (user1.followed) {
+        if (user1.isFollowed()) {
             follow.setText("unfollow");
         }
         else{
@@ -39,14 +40,18 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                if (!user1.followed) {
+                MediaPlayer media = MediaPlayer.create(MainActivity.this,R.raw.start);
+                media.start();
+//                media.release();
+//                media = null;
+                if (!user1.isFollowed()) {
 //                    follow.setText("follow");
-                    user1.followed = true;
+                    user1.setFollowed(true);
                     Toast.makeText(getApplicationContext(),"followed",Toast.LENGTH_SHORT).show();
                     follow.setText("unfollow");
                 }
                 else{
-                    user1.followed = false;
+                    user1.setFollowed(false);
                     Toast.makeText(getApplicationContext(),"unfollowed",Toast.LENGTH_SHORT).show();
                     follow.setText("follow");
 

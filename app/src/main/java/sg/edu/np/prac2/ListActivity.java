@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,12 +24,17 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             alertBox();
+            MediaPlayer media = MediaPlayer.create(ListActivity.this,R.raw.sus);
+            media.start();
+//            media.release();
+//            media = null;
+
             }
         });
     }
     private int randomNumber(){
         Random ran = new Random();
-        int ranValue = ran.nextInt(10000);
+        int ranValue = ran.nextInt(10000000);
         return ranValue;
 
     }
